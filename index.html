@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AI Coding Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        .draggable { -webkit-app-region: drag; }
+        .non-draggable { -webkit-app-region: no-drag; }
+        body { background-color: transparent; }
+        .app-container { background-color: rgba(17, 24, 39, 0.9); backdrop-filter: blur(10px); }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 3px; }
+        .lang-btn { transition: background-color 0.2s; }
+        .lang-btn.active { background-color: #0891b2; /* cyan-700 */ }
+    </style>
+</head>
+<body class="rounded-lg overflow-hidden">
+
+    <div id="app" class="app-container h-screen flex flex-col text-gray-200 rounded-lg">
+        <!-- Title Bar (Draggable) -->
+        <div class="draggable bg-gray-900/50 p-2 flex justify-between items-center">
+            <span class="text-sm font-bold text-cyan-400">AI Coding Assistant</span>
+            <button id="close-btn" class="non-draggable text-gray-400 hover:text-white">&times;</button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="p-4 flex-grow flex flex-col min-h-0">
+            <textarea id="problem-input" class="non-draggable w-full h-32 p-2 bg-gray-800 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Paste problem here..."></textarea>
+            
+            <!-- Language Selector -->
+            <div class="non-draggable mt-2 grid grid-cols-3 gap-1 text-sm">
+                <button class="lang-btn py-1 rounded-md bg-gray-700 hover:bg-gray-600 active" data-lang="python">Python</button>
+                <button class="lang-btn py-1 rounded-md bg-gray-700 hover:bg-gray-600" data-lang="cpp">C++</button>
+                <button class="lang-btn py-1 rounded-md bg-gray-700 hover:bg-gray-600" data-lang="java">Java</button>
+            </div>
+
+            <button id="generate-button" class="non-draggable mt-2 w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 rounded-lg">Generate</button>
+
+            <!-- Solution Display -->
+            <div class="mt-4 flex-grow overflow-y-auto">
+                <pre class="h-full"><code id="solution-output" class="language-python"></code></pre>
+            </div>
+        </div>
+
+        <!-- Opacity Slider -->
+        <div class="p-2 bg-gray-900/50 flex items-center space-x-2">
+            <label for="opacity-slider" class="text-xs text-gray-400">Opacity</label>
+            <!-- UPDATED: Changed min to 0.01 and step to 0.01 for finer control -->
+            <input id="opacity-slider" type="range" min="0.01" max="1" step="0.01" value="0.9" class="non-draggable w-full">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script src="./renderer.js"></script>
+</body>
+</html>
