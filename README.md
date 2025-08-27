@@ -1,4 +1,5 @@
 AI Coding Assistant Widget
+
 A discreet, always-on-top desktop widget that provides AI-powered code solutions for technical interview questions. Built with Electron and powered by the Gemini API.
 
 Features
