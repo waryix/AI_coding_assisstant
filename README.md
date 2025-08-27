@@ -3,6 +3,7 @@ AI Coding Assistant Widget
 A discreet, always-on-top desktop widget that provides AI-powered code solutions for technical interview questions. Built with Electron and powered by the Gemini API.
 
 Features
+
 Discreet Interface: A small, frameless window that can be placed anywhere on your screen.
 Always-On-Top: Stays visible over your IDE, browser, or video call application.
 Adjustable Transparency: Make the widget almost invisible to blend in with your background.
